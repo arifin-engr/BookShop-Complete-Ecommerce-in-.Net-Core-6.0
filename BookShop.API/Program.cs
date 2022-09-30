@@ -1,4 +1,6 @@
 using BookShop.DAL.Data;
+using BookShop.DAL.Repository;
+using BookShop.DAL.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>(x => x
 .UseSqlServer(builder.Configuration.GetConnectionString("con")));
+
+// Dependency of Unit Of Work
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
