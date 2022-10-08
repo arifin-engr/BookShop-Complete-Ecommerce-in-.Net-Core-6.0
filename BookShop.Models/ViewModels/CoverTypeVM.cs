@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
-namespace BookShop.UI.Models.ViewModel
+namespace BookShop.Models.ViewModels
 {
     public class CoverTypeVM
     {

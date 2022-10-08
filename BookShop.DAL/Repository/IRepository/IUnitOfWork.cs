@@ -10,6 +10,7 @@ namespace BookShop.DAL.Repository.IRepository
     {
         public ICategoryRepository Category { get;}
        public ICoverTypeRepository CoverType { get;}
+       public IProductRepository Product { get;}
 
         void Save();
     }

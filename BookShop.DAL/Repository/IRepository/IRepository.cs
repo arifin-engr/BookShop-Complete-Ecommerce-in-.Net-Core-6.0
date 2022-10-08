@@ -9,9 +9,9 @@ namespace BookShop.DAL.Repository.IRepository
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(string ? includeproperties=null);
         void Add(T entity);
-        T GetFirstOrDeFault(Expression<Func<T, bool>> filter);
+        T GetFirstOrDeFault(Expression<Func<T, bool>> filter, string? includeproperties = null);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
     }

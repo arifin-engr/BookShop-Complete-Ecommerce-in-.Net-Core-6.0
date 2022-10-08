@@ -1,4 +1,4 @@
-﻿using BookShop.UI.Models.ViewModel;
+﻿using BookShop.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;

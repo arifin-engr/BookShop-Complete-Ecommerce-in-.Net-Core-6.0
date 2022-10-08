@@ -24,15 +24,29 @@ namespace BookShop.DAL.Repository
             _dbSet.Add(entity);
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(string? includeproperties = null)
         {
             IQueryable<T> query = _dbSet;
+            if (includeproperties!=null)
+            {
+                foreach (var inclueprop in includeproperties.Split(new char[]{ ','},StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query=  query.Include(inclueprop);
+                }
+            }
             return query.ToList();
         }
 
-        public T GetFirstOrDeFault(Expression<Func<T, bool>> filter)
+        public T GetFirstOrDeFault(Expression<Func<T, bool>> filter, string? includeproperties = null)
         {
            IQueryable<T> query = _dbSet;
+            if (includeproperties != null)
+            {
+                foreach (var inclueprop in includeproperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(inclueprop);
+                }
+            }
             query = query.Where(filter);
             return query.FirstOrDefault();
         }
